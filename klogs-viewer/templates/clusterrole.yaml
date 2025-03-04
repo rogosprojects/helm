@@ -14,13 +14,13 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: {{ include "chart.fullname" . }}-{{ .Release.Namespace }}
+  name: {{ include "chart.fullname" . }}-{{ include "chart.namespace" . }}
   labels:
     {{- include "chart.labels" . | nindent 4 }}
 subjects:
 - kind: ServiceAccount
   name: {{ include "chart.serviceAccountName" . }}
-  namespace: {{ .Release.Namespace }}
+  namespace: {{ include "chart.namespace" . }}
 roleRef:
   kind: ClusterRole
   name: {{ include "chart.fullname" . }}

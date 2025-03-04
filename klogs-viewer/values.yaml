@@ -1,5 +1,9 @@
 # Default values for klogs-viewer
 
+# Namespace to install the chart into
+# If not provided, the namespace will be set to the release namespace
+namespace: ""
+
 replicaCount: 1
 
 image:

@@ -3,6 +3,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: {{ include "chart.fullname" . }}
+  namespace: {{ include "chart.namespace" . }}
   labels:
     {{- include "chart.labels" . | nindent 4 }}
 rules:
@@ -15,12 +16,13 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: {{ include "chart.fullname" . }}
+  namespace: {{ include "chart.namespace" . }}
   labels:
     {{- include "chart.labels" . | nindent 4 }}
 subjects:
 - kind: ServiceAccount
   name: {{ include "chart.serviceAccountName" . }}
-  namespace: {{ .Release.Namespace }}
+  namespace: {{ include "chart.namespace" . }}
 roleRef:
   kind: Role
   name: {{ include "chart.fullname" . }}
