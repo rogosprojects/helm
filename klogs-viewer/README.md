@@ -21,8 +21,11 @@ This Helm chart deploys KLogs Viewer, a lightweight web application that allows 
 Add the Helm repository:
 
 ```bash
-helm repo add klogs-viewer https://rogosprojects.github.io/klogs-viewer
+helm repo add rogosprojects https://raw.githubusercontent.com/rogosprojects/helm/master
+
 helm repo update
+
+helm install klogs-viewer rogosprojects/klogs-viewer
 ```
 
 Install the chart:
