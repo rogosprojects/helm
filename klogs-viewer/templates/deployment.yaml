@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-reader
+  namespace: {{ .Release.Namespace }}
+spec:
+  selector:
+    matchLabels:
+      app: log-reader
+  template:
+    metadata:
+      labels:
+        app: log-reader
+    spec:
+      serviceAccountName: log-reader
+      imagePullSecrets:
+      {{- if .Values.image.pullSecrets }}
+      {{- range .Values.image.pullSecrets }}
+      - name: {{ . }}
+      {{- end }}
+      {{- end }}
+      containers:
+      - name: log-reader
+        imagePullPolicy: Always
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        ports:
+        - containerPort: 8080
+        env:
+        {{ if eq .Values.watchAllNamespaces "false"}}
+        - name: NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        {{ end }}
+        - name: TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: log-reader
+              key: token
+        - name: POD_LABELS
+          value: {{ .Values.podLabels }}
+        resources:
+          limits:
+            cpu: 900m
+            memory: 128Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi

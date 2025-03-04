@@ -1,0 +1,26 @@
+{{ if eq .Values.watchAllNamespaces "false"  }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: pod-logs-reader
+  namespace: {{ .Release.Namespace }}
+rules:
+- apiGroups: [""]
+  resources: ["pods", "pods/log"]
+  verbs: ["get", "list"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: log-reader-binding
+  namespace: {{ .Release.Namespace }}
+subjects:
+- kind: ServiceAccount
+  name: log-reader
+  namespace: {{ .Release.Namespace }}
+roleRef:
+  kind: Role
+  name: pod-logs-reader
+  apiGroup: rbac.authorization.k8s.io
+{{ end }}
