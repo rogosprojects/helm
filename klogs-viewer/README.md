@@ -18,24 +18,15 @@ This Helm chart deploys KLogs Viewer, a lightweight web application that allows 
 
 ### Installation
 
-Add the Helm repository:
+Add the Helm repository and install the chart:
 
 ```bash
 helm repo add rogosprojects https://raw.githubusercontent.com/rogosprojects/helm/master
-
 helm repo update
-
-helm install klogs-viewer rogosprojects/klogs-viewer
-```
-
-Install the chart:
-
-```bash
 # Simple installation with default values
-helm install klogs-viewer klogs-viewer/klogs-viewer
-
+helm install klogs-viewer rogosprojects/klogs-viewer
 # Installation with custom values file
-helm install klogs-viewer klogs-viewer/klogs-viewer --namespace observability --create-namespace --values values.yaml
+helm install klogs-viewer rogosprojects/klogs-viewer  --namespace observability --create-namespace --values values.yaml
 ```
 
 ### Using with the chart source code:
