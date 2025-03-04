@@ -1,0 +1,90 @@
+# Default values for klogs-viewer
+
+replicaCount: 1
+
+image:
+  repository: ghcr.io/rogosprojects/klogs-viewer
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+# ClusterRole vs. Role
+# If watchAllNamespaces is true, a ClusterRole will be created
+# If watchAllNamespaces is false, a Role will be created for the release namespace only
+rbac:
+  # Set this to true to watch all namespaces (requires ClusterRole)
+  watchAllNamespaces: true
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 8080
+  containerPort: 8080
+
+application:
+  # Specify the namespaces to watch, comma-separated list or "*" for all namespaces
+  # If not specified, the application will watch all namespaces
+  namespaces: "test"
+  # Label selector for pods, in the format key1=value1,key2=value2
+  # If not specified, all pods will be shown
+  podSelector: "app=nginx"
+  # Enable authentication with a token
+  authEnabled: false
+  # Token to use for authentication (will be stored in a secret)
+  # If authEnabled is true and token is not provided, a random token will be generated
+  authToken: "random"
+
+
+ingress:
+  enabled: true
+  className: ""
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /logs
+          pathType: ImplementationSpecific
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources:
+  limits:
+    cpu: 900m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 64Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

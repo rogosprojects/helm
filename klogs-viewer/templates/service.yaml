@@ -1,14 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: log-reader
-  namespace: {{ .Release.Namespace }}
+  name: {{ include "chart.fullname" . }}
+  labels:
+    {{- include "chart.labels" . | nindent 4 }}
 spec:
+  type: {{ .Values.service.type }}
   ports:
-  - port: 8080
-    protocol: TCP
-    targetPort: 8080
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.containerPort }}
+      protocol: TCP
+      name: http
   selector:
-    app: log-reader
-  sessionAffinity: None
-  type: ClusterIP
+    {{- include "chart.selectorLabels" . | nindent 4 }}

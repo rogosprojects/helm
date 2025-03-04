@@ -1,3 +1,31 @@
 Thank you for installing {{ .Chart.Name }}.
 
 Your release is named {{ .Release.Name }}.
+
+{{- if .Values.ingress.enabled }}
+The application is available at:
+{{- range $host := .Values.ingress.hosts }}
+  {{- range .paths }}
+  http{{ if $.Values.ingress.tls }}s{{ end }}://{{ $host.host }}{{ .path }}
+  {{- end }}
+{{- end }}
+{{- else }}
+To access the application, run these commands:
+
+  export POD_NAME=$(kubectl get pods --namespace {{ .Release.Namespace }} -l "app.kubernetes.io/name={{ include "chart.name" . }},app.kubernetes.io/instance={{ .Release.Name }}" -o jsonpath="{.items[0].metadata.name}")
+  export CONTAINER_PORT=$(kubectl get pod --namespace {{ .Release.Namespace }} $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+  kubectl --namespace {{ .Release.Namespace }} port-forward $POD_NAME {{ .Values.service.port }}:$CONTAINER_PORT
+
+Then visit http://localhost:{{ .Values.service.port }} in your browser.
+{{- end }}
+
+{{- if .Values.application.authEnabled }}
+Authentication is enabled.
+{{- if .Values.application.authToken }}
+The authentication token is set to the value you provided.
+{{- else }}
+A random authentication token has been generated for you.
+{{- end }}
+{{- else }}
+Authentication is currently disabled. For production use, it's recommended to enable authentication by setting application.authEnabled=true.
+{{- end }}
