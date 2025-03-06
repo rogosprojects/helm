@@ -42,7 +42,7 @@ helm install klogs-viewer . --namespace observability --create-namespace
 
 ## Configuration
 
-The following table lists the configurable parameters of the chart and their default values.
+The following table lists the main configurable parameters of the chart and their default values.
 
 | Parameter | Description | Default |
 |-----------|-------------|---------|

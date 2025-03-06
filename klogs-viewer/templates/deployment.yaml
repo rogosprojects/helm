@@ -61,6 +61,10 @@ spec:
         - name: POD_LABELS
           value: {{ .Values.application.podSelector }}
         {{- end }}
+        {{- if .Values.application.replaceLabel }}
+        - name: REPLACE_LABEL
+          value: {{ .Values.application.replaceLabel }}
+        {{- end }}
         resources:
           {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

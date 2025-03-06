@@ -61,6 +61,10 @@ application:
   # Token to use for authentication (will be stored in a secret)
   # If authEnabled is true and token is not provided, a random token will be generated
   authToken: "random"
+  # Label to omit in the logs viewer for the pod selector.
+  # If not specified, the label will be "app="
+  # It improves the UI by removing the label from the logs viewer
+  replaceLabel: ""
 
 
 ingress:
