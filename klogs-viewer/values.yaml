@@ -9,7 +9,9 @@ replicaCount: 1
 image:
   repository: ghcr.io/rogosprojects/klogs-viewer
   pullPolicy: IfNotPresent
-  tag: "latest"
+  # Overrides the image tag whose default is the chart appVersion. (recommended)
+  # If you want to use a specific version, set the tag to the version number. Example: tag: "0.1.5"
+  # tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""
