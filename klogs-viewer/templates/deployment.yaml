@@ -40,15 +40,16 @@ spec:
         - containerPort: {{ .Values.service.containerPort }}
           protocol: TCP
         env:
+        - name: POD_LABELS
+          value: {{ required "Missing podSelector" .Values.application.podSelector }}
         {{- if not .Values.rbac.watchAllNamespaces }}
         - name: NAMESPACE
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
-        {{- end }}
-        {{- if .Values.application.namespaces }}
-        - name: NAMESPACES
-          value: {{ .Values.application.namespaces }}
+        {{- else }}
+        - name: NAMESPACE
+          value: "*"
         {{- end }}
         {{- if .Values.application.authEnabled }}
         - name: TOKEN
@@ -56,10 +57,6 @@ spec:
             secretKeyRef:
               name: {{ include "chart.fullname" . }}
               key: token
-        {{- end }}
-        {{- if .Values.application.podSelector }}
-        - name: POD_LABELS
-          value: {{ .Values.application.podSelector }}
         {{- end }}
         {{- if .Values.application.replaceLabel }}
         - name: REPLACE_LABEL

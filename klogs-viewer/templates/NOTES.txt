@@ -20,12 +20,12 @@ Then visit http://localhost:{{ .Values.service.port }} in your browser.
 {{- end }}
 
 {{- if .Values.application.authEnabled }}
-Authentication is enabled.
+*** Authentication is enabled. Remember to add the token query parameters (?token=TOKEN) ***
 {{- if .Values.application.authToken }}
 The authentication token is set to the value you provided.
 {{- else }}
-A random authentication token has been generated for you.
+A random authentication token has been generated for you. See secret {{ .Release.Name }}-klogs-viewer for the token.
 {{- end }}
 {{- else }}
-Authentication is currently disabled. For production use, it's recommended to enable authentication by setting application.authEnabled=true.
+Authentication is currently disabled. For production use, it is recommended to enable authentication by setting application.authEnabled=true.
 {{- end }}

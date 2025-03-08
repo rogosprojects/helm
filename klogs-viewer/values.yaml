@@ -29,6 +29,7 @@ serviceAccount:
 # If watchAllNamespaces is false, a Role will be created for the release namespace only
 rbac:
   # Set this to true to watch all namespaces (requires ClusterRole)
+  # or false to watch only the release namespace (requires Role)
   watchAllNamespaces: true
 
 podAnnotations: {}
@@ -50,9 +51,6 @@ service:
   containerPort: 8080
 
 application:
-  # Specify the namespaces to watch, comma-separated list or "*" for all namespaces
-  # If not specified, the application will watch all namespaces
-  namespaces: "test"
   # Label selector for pods, in the format key1=value1,key2=value2
   # If not specified, all pods will be shown
   podSelector: "app=nginx"

@@ -3,7 +3,20 @@ entries:
   klogs-viewer:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-03-06T16:28:24.221447278+01:00"
+    created: "2025-03-08T10:33:36.065850303+01:00"
+    description: KLogs Viewer is a lightweight, web-based application that allows
+      you to view and download Kubernetes pod logs directly in your browser. Designed
+      for developers and operators who need quick access to container logs without
+      using the command line.
+    digest: afa60b7a88cc1b30a9535447afe78f715b4a953a378819bfbc7d40d347f6810e
+    name: klogs-viewer
+    type: application
+    urls:
+    - klogs-viewer-0.1.5.tgz
+    version: 0.1.5
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-03-08T10:33:36.065514708+01:00"
     description: KLogs Viewer is a lightweight, web-based application that allows
       you to view and download Kubernetes pod logs directly in your browser. Designed
       for developers and operators who need quick access to container logs without
@@ -16,7 +29,7 @@ entries:
     version: 0.1.4
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-03-06T16:28:24.221033669+01:00"
+    created: "2025-03-08T10:33:36.065168218+01:00"
     description: KLogs Viewer is a lightweight, web-based application that allows
       you to view and download Kubernetes pod logs directly in your browser. Designed
       for developers and operators who need quick access to container logs without
@@ -29,7 +42,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-03-06T16:28:24.22067747+01:00"
+    created: "2025-03-08T10:33:36.064801473+01:00"
     description: KLogs Viewer is a lightweight, web-based application that allows
       you to view and download Kubernetes pod logs directly in your browser. Designed
       for developers and operators who need quick access to container logs without
@@ -40,4 +53,4 @@ entries:
     urls:
     - klogs-viewer-0.1.2.tgz
     version: 0.1.2
-generated: "2025-03-06T16:28:24.220148062+01:00"
+generated: "2025-03-08T10:33:36.064302376+01:00"
