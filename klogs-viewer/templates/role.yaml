@@ -2,7 +2,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: {{ include "chart.fullname" . }}
+  name: {{ default "klogs-viewer" .Values.rbac.role.name }}
   namespace: {{ include "chart.namespace" . }}
   labels:
     {{- include "chart.labels" . | nindent 4 }}
@@ -15,16 +15,16 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: {{ include "chart.fullname" . }}
+  name: {{ default "klogs-viewer" .Values.rbac.role.name }}
   namespace: {{ include "chart.namespace" . }}
   labels:
     {{- include "chart.labels" . | nindent 4 }}
 subjects:
 - kind: ServiceAccount
-  name: {{ include "chart.serviceAccountName" . }}
+  name: {{ default "klogs-viewer" .Values.serviceAccount.name }}
   namespace: {{ include "chart.namespace" . }}
 roleRef:
   kind: Role
-  name: {{ include "chart.fullname" . }}
+  name: {{ default "klogs-viewer" .Values.rbac.role.name }}
   apiGroup: rbac.authorization.k8s.io
 {{- end }}

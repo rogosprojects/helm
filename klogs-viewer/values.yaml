@@ -23,8 +23,7 @@ serviceAccount:
   # Annotations to add to the service account
   annotations: {}
   # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
-  name: ""
+  name: "klogs-viewer"
 
 # ClusterRole vs. Role
 # If watchAllNamespaces is true, a ClusterRole will be created
@@ -33,6 +32,10 @@ rbac:
   # Set this to true to watch all namespaces (requires ClusterRole)
   # or false to watch only the release namespace (requires Role)
   watchAllNamespaces: true
+  clusterRole:
+    name: ""
+  role:
+    name: ""
 
 podAnnotations: {}
 
@@ -51,6 +54,7 @@ service:
   type: ClusterIP
   port: 8080
   containerPort: 8080
+  name: klogs-viewer
 
 application:
   # Label selector for pods, in the format key1=value1,key2=value2

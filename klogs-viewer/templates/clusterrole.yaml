@@ -2,7 +2,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: {{ include "chart.fullname" . }}
+  name: {{ default "klogs-viewer" .Values.rbac.clusterRole.name }}
   labels:
     {{- include "chart.labels" . | nindent 4 }}
 rules:
@@ -14,15 +14,15 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: {{ include "chart.fullname" . }}-{{ include "chart.namespace" . }}
+  name: {{ default "klogs-viewer" .Values.rbac.clusterRole.name }}-{{ include "chart.namespace" . }}
   labels:
     {{- include "chart.labels" . | nindent 4 }}
 subjects:
 - kind: ServiceAccount
-  name: {{ include "chart.serviceAccountName" . }}
+  name: {{ default "klogs-viewer" .Values.serviceAccount.name }}
   namespace: {{ include "chart.namespace" . }}
 roleRef:
   kind: ClusterRole
-  name: {{ include "chart.fullname" . }}
+  name: {{ default "klogs-viewer" .Values.rbac.clusterRole.name }}
   apiGroup: rbac.authorization.k8s.io
 {{- end }}
