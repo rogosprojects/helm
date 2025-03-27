@@ -22,6 +22,7 @@ serviceAccount:
   create: true
   # Annotations to add to the service account
   annotations: {}
+
   # The name of the service account to use.
   name: "klogs-viewer"
 
@@ -77,6 +78,17 @@ ingress:
   annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
+    #
+    # set those annotation if using WebSocket with nginx ingress
+    # nginx.ingress.kubernetes.io/affinity: cookie
+    # nginx.ingress.kubernetes.io/proxy-buffer-size: 8k
+    # nginx.ingress.kubernetes.io/proxy-connect-timeout: "60"
+    # nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    # nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    # nginx.ingress.kubernetes.io/session-cookie-expires: "172800"
+    # nginx.ingress.kubernetes.io/session-cookie-max-age: "172800"
+    # nginx.ingress.kubernetes.io/session-cookie-name: route
+    # nginx.ingress.kubernetes.io/websocket-services: klogs-viewer
   hosts:
     - host: chart-example.local
       paths:
