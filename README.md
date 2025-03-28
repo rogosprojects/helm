@@ -1,3 +1,3 @@
 # Helm repositories index
 
-- klogs-viewer [Documentation](./klogs-viewer/README.md)
+- klogs-viewer [Documentation](./charts/klogs-viewer/README.md)
