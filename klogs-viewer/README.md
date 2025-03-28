@@ -54,6 +54,13 @@ The following table lists the main configurable parameters of the chart and thei
 | `podLabels` | Comma-separated list of pod label selectors | `app=*` |
 | `token` | Authentication token (leave empty to disable authentication) | `""` |
 | `ingress.className` | Ingress class name | `nginx` |
+| `ALLOWED_ORIGINS` | Comma-separated list of allowed WebSocket origins | `""` |
+
+### WebSocket Origin Restrictions
+
+- **For single-domain deployments**: Leave `ALLOWED_ORIGINS` empty to enforce the same-origin policy.
+- **For multi-domain deployments**: Set `ALLOWED_ORIGINS` to a comma-separated list of allowed domains.
+- **For testing/development only**: Set `ALLOWED_ORIGINS=*` (not recommended for production).
 
 ## Security Considerations
 

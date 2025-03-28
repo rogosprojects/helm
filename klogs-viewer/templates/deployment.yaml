@@ -62,6 +62,8 @@ spec:
         - name: REPLACE_LABEL
           value: {{ .Values.application.replaceLabel }}
         {{- end }}
+        - name: ALLOWED_ORIGINS
+          value: {{ .Values.application.allowedOrigins | quote }}
         resources:
           {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

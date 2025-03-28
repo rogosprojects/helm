@@ -71,7 +71,11 @@ application:
   # If not specified, the label will be "app="
   # It improves the UI by removing the label from the logs viewer
   replaceLabel: ""
-
+  # Comma-separated list of allowed WebSocket origins
+  # Leave empty to enforce same-origin policy
+  # Example: "https://example.com,https://another-domain.com"
+  # For testing/development only: set to "*" (not recommended for production)
+  allowedOrigins: ""
 
 ingress:
   enabled: true
