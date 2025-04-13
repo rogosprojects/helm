@@ -85,7 +85,7 @@ config:
           deployments:
             - my-deployment
             - my-api
-          statefulSets:
+          statefulsets:
             - my-database
 ```
 

@@ -101,7 +101,7 @@ config:
       order: 20
       selector:
         database:
-          statefulSets:
+          statefulsets:
             - postgres
             - mysql
 
