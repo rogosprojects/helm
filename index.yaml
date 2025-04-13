@@ -105,4 +105,20 @@ entries:
     urls:
     - klogs-viewer-0.1.5.tgz
     version: 0.1.5
-generated: "2025-04-03T13:37:43.435642289Z"
+  kpods-monitor:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2025-04-13T22:27:43.400941304Z"
+    description: A Helm chart for Kubernetes Pod Monitor
+    digest: a7bc8af26bacb477681c5b6b30852116f8f2cd4471034c6236cde4b358f588a5
+    home: https://github.com/rogosprojects/kpods-monitor
+    keywords:
+    - kubernetes
+    - monitoring
+    - pods
+    name: kpods-monitor
+    type: application
+    urls:
+    - https://github.com/rogosprojects/helm/releases/download/kpods-monitor-0.1.0/kpods-monitor-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-04-13T22:27:43.400961732Z"
