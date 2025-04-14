@@ -1,10 +1,9 @@
-# Kubernetes Pod Monitor Helm Chart
+# KPod Monitor Helm Chart
 
 This Helm chart deploys the Kubernetes Pod Monitor application, a modern dashboard for monitoring Kubernetes applications and their pods with real-time updates.
 
 ## Prerequisites
 
-- Kubernetes 1.16+
 - Helm 3.0+
 - Metrics Server installed in the cluster (optional, for resource metrics)
 
@@ -13,15 +12,12 @@ This Helm chart deploys the Kubernetes Pod Monitor application, a modern dashboa
 To install the chart with the release name `kpods-monitor`:
 
 ```bash
-helm install kpods-monitor ./helm-chart
-```
-
-## Uninstalling the Chart
-
-To uninstall/delete the `kpods-monitor` deployment:
-
-```bash
-helm delete kpods-monitor
+helm repo add rogosprojects https://rogosprojects.github.io/helm
+helm repo update
+# Simple installation with default values
+helm install kpods-monitor rogosprojects/kpods-monitor
+# Installation with custom values file
+helm install kpods-monitor rogosprojects/kpods-monitor  --namespace observability --create-namespace --values values.yaml
 ```
 
 ## Configuration
@@ -61,6 +57,7 @@ The following table lists the configurable parameters of the Kubernetes Pod Moni
 | `config.general.refreshInterval`           | Data refresh interval in seconds                | `30`                           |
 | `config.general.port`                      | Application port                                | `8080`                         |
 | `config.general.debug`                     | Enable debug logging                            | `false`                        |
+| `config.general.basePath`                  | Base path for serving the application           | `""`                           |
 | `config.general.auth.enabled`              | Enable authentication                           | `false`                        |
 | `config.general.auth.type`                 | Authentication type (basic, token, none)        | `"none"`                       |
 | `config.general.auth.apiKey`               | API key for token authentication                | `""`                           |
@@ -69,6 +66,7 @@ The following table lists the configurable parameters of the Kubernetes Pod Moni
 | `config.cluster.inCluster`                 | Use in-cluster configuration                    | `true`                         |
 | `config.cluster.kubeConfigPath`            | Path to kubeconfig file                         | `""`                           |
 | `config.applications`                      | Applications to monitor                         | See `values.yaml`              |
+
 
 ## Example: Monitoring Custom Applications
 
@@ -106,7 +104,5 @@ If the dashboard is not showing any applications:
 
 1. Check that the service account has the necessary permissions
 2. Verify that your application selectors match existing resources
-3. Check the pod logs for any errors:
-   ```bash
-   kubectl logs -l app.kubernetes.io/name=kpods-monitor
-   ```
+3. Check the pod logs for any errors
+4. Check the application base path
