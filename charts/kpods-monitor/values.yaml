@@ -23,6 +23,7 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 
+
 podAnnotations: {}
 
 podSecurityContext: {}
@@ -50,7 +51,7 @@ ingress:
   hosts:
     - host: kpods-monitor.local
       paths:
-        - path: /
+        - path: /monitor # see config.general.basePath
           pathType: ImplementationSpecific
   tls: []
   #  - secretName: kpods-monitor-tls
@@ -78,12 +79,16 @@ config:
     refreshInterval: 30
     port: 8080
     debug: false
+    # Base path for serving the application (e.g., "/monitor")
+    # If empty, the application will be served at the root path
+    basePath: "/monitor"
     auth:
       enabled: false
       type: "none"  # Options: basic, token, none
       apiKey: ""
       username: "admin"
       password: "change_this_password"
+
 
   # Applications to monitor
   applications:
