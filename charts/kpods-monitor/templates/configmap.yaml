@@ -1,0 +1,65 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "kpods-monitor.fullname" . }}-config
+  labels:
+    {{- include "kpods-monitor.labels" . | nindent 4 }}
+data:
+  config.yaml: |
+    general:
+      name: {{ .Values.config.general.name | quote }}
+      refreshInterval: {{ .Values.config.general.refreshInterval }}
+      port: {{ .Values.config.general.port }}
+      debug: {{ .Values.config.general.debug }}
+      basePath: {{ default "" .Values.config.general.basePath }}
+      auth:
+        enabled: {{ .Values.config.general.auth.enabled }}
+        type: {{ .Values.config.general.auth.type | quote }}
+        apiKey: {{ .Values.config.general.auth.apiKey | quote }}
+        username: {{ .Values.config.general.auth.username | quote }}
+        password: {{ .Values.config.general.auth.password | quote }}
+
+    cluster:
+      inCluster: true
+      kubeConfigPath: ""
+
+    applications:
+      {{- range .Values.config.applications }}
+      - name: {{ .name | quote }}
+        description: {{ .description | quote }}
+        order: {{ .order }}
+        selector:
+          {{- range $namespace, $selector := .selector }}
+          {{ $namespace }}:
+            {{- if $selector.deployments }}
+            deployments:
+              {{- range $selector.deployments }}
+              - {{ . | quote }}
+              {{- end }}
+            {{- end }}
+            {{- if $selector.statefulsets }}
+            statefulsets:
+              {{- range $selector.statefulsets }}
+              - {{ . | quote }}
+              {{- end }}
+            {{- end }}
+            {{- if $selector.daemonSets }}
+            daemonSets:
+              {{- range $selector.daemonSets }}
+              - {{ . | quote }}
+              {{- end }}
+            {{- end }}
+            {{- if $selector.labels }}
+            labels:
+              {{- range $key, $value := $selector.labels }}
+              {{ $key }}: {{ $value | quote }}
+              {{- end }}
+            {{- end }}
+            {{- if $selector.annotations }}
+            annotations:
+              {{- range $key, $value := $selector.annotations }}
+              {{ $key }}: {{ $value | quote }}
+              {{- end }}
+            {{- end }}
+          {{- end }}
+      {{- end }}
