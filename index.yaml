@@ -107,6 +107,21 @@ entries:
     version: 0.1.5
   kpods-monitor:
   - apiVersion: v2
+    appVersion: 0.1.2
+    created: "2025-04-14T22:37:44.039598242Z"
+    description: A Helm chart for Kubernetes Pod Monitor
+    digest: e57921a190c047c9f302a5eaea732a3326a97e8020d2b58c91df9115c6240d6a
+    home: https://github.com/rogosprojects/kpods-monitor
+    keywords:
+    - kubernetes
+    - monitoring
+    - pods
+    name: kpods-monitor
+    type: application
+    urls:
+    - https://github.com/rogosprojects/helm/releases/download/kpods-monitor-0.1.3/kpods-monitor-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
     appVersion: 0.1.1
     created: "2025-04-14T14:21:48.836024787Z"
     description: A Helm chart for Kubernetes Pod Monitor
@@ -151,4 +166,4 @@ entries:
     urls:
     - https://github.com/rogosprojects/helm/releases/download/kpods-monitor-0.1.0/kpods-monitor-0.1.0.tgz
     version: 0.1.0
-generated: "2025-04-14T14:21:48.836053401Z"
+generated: "2025-04-14T22:37:44.039632025Z"
