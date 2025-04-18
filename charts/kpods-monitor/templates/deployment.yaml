@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "kpods-monitor.fullname" . }}
+  namespace: {{ include "chart.namespace" . }}
   labels:
     {{- include "kpods-monitor.labels" . | nindent 4 }}
 spec:

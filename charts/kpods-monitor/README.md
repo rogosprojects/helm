@@ -35,6 +35,7 @@ The following table lists the configurable parameters of the Kubernetes Pod Moni
 | `imagePullSecrets`        | Image pull secrets                              | `[]`                           |
 | `nameOverride`            | Override the name of the chart                  | `""`                           |
 | `fullnameOverride`        | Override the full name of the chart             | `""`                           |
+| `namespace`               | Namespace for the application                   | `""`                           |
 | `serviceAccount.create`   | Create a service account                        | `true`                         |
 | `serviceAccount.name`     | The name of the service account                 | `""`                           |
 | `podAnnotations`          | Annotations for the pods                        | `{}`                           |

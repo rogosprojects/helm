@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ include "kpods-monitor.fullname" . }}-config
+  namespace: {{ include "chart.namespace" . }}
   labels:
     {{- include "kpods-monitor.labels" . | nindent 4 }}
 data:

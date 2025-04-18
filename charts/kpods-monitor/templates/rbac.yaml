@@ -32,5 +32,5 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: {{ include "kpods-monitor.serviceAccountName" . }}
-    namespace: {{ .Release.Namespace }}
+    namespace: {{ include "chart.namespace" . }}
 {{- end }}
