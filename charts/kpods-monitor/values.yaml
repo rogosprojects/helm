@@ -77,7 +77,6 @@ affinity: {}
 config:
   general:
     name: "Kubernetes Pod Monitor Dashboard"
-    refreshInterval: 30
     port: 8080
     debug: false
     # Base path for serving the application (e.g., "/monitor")

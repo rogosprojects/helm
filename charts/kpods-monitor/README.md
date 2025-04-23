@@ -55,7 +55,6 @@ The following table lists the configurable parameters of the Kubernetes Pod Moni
 | Parameter                                  | Description                                     | Default                        |
 |--------------------------------------------|-------------------------------------------------|--------------------------------|
 | `config.general.name`                      | Dashboard name                                  | `"Kubernetes Pod Monitor"`     |
-| `config.general.refreshInterval`           | Data refresh interval in seconds                | `30`                           |
 | `config.general.port`                      | Application port                                | `8080`                         |
 | `config.general.debug`                     | Enable debug logging                            | `false`                        |
 | `config.general.basePath`                  | Base path for serving the application           | `""`                           |
@@ -67,7 +66,6 @@ The following table lists the configurable parameters of the Kubernetes Pod Moni
 | `config.cluster.inCluster`                 | Use in-cluster configuration                    | `true`                         |
 | `config.cluster.kubeConfigPath`            | Path to kubeconfig file                         | `""`                           |
 | `config.applications`                      | Applications to monitor                         | See `values.yaml`              |
-
 
 ## Example: Monitoring Custom Applications
 
