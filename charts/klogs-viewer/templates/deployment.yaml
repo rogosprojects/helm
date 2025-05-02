@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: klogs-viewer
+  name: {{ include "chart.fullname" . }}
   namespace: {{ include "chart.namespace" . }}
   labels:
     {{- include "chart.labels" . | nindent 4 }}
@@ -55,7 +55,7 @@ spec:
         - name: TOKEN
           valueFrom:
             secretKeyRef:
-              name: klogs-viewer
+              name: {{ include "chart.fullname" . }}
               key: token
         {{- end }}
         {{- if .Values.application.replaceLabel }}
