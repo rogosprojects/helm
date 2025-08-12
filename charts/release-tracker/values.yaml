@@ -1,0 +1,101 @@
+# Default values for release-tracker.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+nameOverride: ""
+fullnameOverride: ""
+
+image:
+  repository: release-tracker
+  tag: latest
+  pullPolicy: IfNotPresent
+  pullSecrets: []
+  # - name: quayio
+
+serviceAccount:
+  create: true
+  name: ""
+  annotations: {}
+
+rbac:
+  create: true
+  # If you want to restrict to specific namespaces, provide them via env NAMESPACES.
+
+podAnnotations: {}
+
+podSecurityContext:
+  fsGroup: 1000
+
+securityContext:
+  allowPrivilegeEscalation: false
+  runAsNonRoot: true
+  runAsUser: 1000
+  runAsGroup: 1000
+  readOnlyRootFilesystem: true
+  capabilities:
+    drop:
+      - ALL
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts:
+    - host: release-tracker.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+
+resources:
+  requests:
+    memory: 128Mi
+    cpu: 100m
+  limits:
+    memory: 512Mi
+    cpu: 500m
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+env:
+  PORT: "8080"
+  DATABASE_PATH: "/data/releases.db"
+  NAMESPACES: "default"
+  COLLECTION_INTERVAL: "60" # Minutes between collections
+  IN_CLUSTER: "true"
+  API_KEYS: "" # API_KEYS can be provided here or via secret
+  BASE_PATH: ""
+  MODE: "slave" # Options: "master" or "slave"
+  MASTER_URL: "" # Required if MODE is "slave"
+  MASTER_API_KEY: "" # Required if MODE is "slave"
+  SYNC_INTERVAL: "5" # Minutes between syncs (slave mode only)
+  CLIENT_NAME: "unknown"
+  ENV_NAME: "unknown"
+  PROXY_URL: "" # HTTP/HTTPS proxy URL for sync requests (slave mode only)
+  TLS_INSECURE: "false" # Skip TLS certificate verification for sync requests (slave mode only)
+
+extraEnv: []
+# - name: LOG_LEVEL
+#   value: info
+
+persistence:
+  enabled: false
+  # If enabled, a PVC will be created and mounted at /data
+  size: 1Gi
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+
+initContainers:
+  enabled: true
+
