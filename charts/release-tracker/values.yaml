@@ -98,4 +98,5 @@ persistence:
 
 initContainers:
   enabled: true
+  image: "busybox"
 

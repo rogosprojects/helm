@@ -1,10 +1,10 @@
 apiVersion: v2
 name: release-tracker
 description: Helm chart for the Release Tracker application
-home: https://github.com/your-org/release-tracker
+home: https://github.com/rogosprojects/helm.git
 icon: https://raw.githubusercontent.com/cncf/artwork/master/projects/helm/icon/color/helm-icon-color.png
 type: application
-version: 0.1.0
+version: 0.1.1
 appVersion: "0.1.0"
 keywords:
   - kubernetes
@@ -12,7 +12,7 @@ keywords:
   - tracking
   - dashboard
 sources:
-  - https://github.com/your-org/release-tracker
+  - https://github.com/rogosprojects/helm.git
 maintainers:
   - name: Maintainers
     email: devnull@example.com

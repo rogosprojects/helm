@@ -29,7 +29,7 @@ spec:
       {{- if .Values.initContainers.enabled }}
       initContainers:
         - name: init-db
-          image: busybox
+          image: {{ .Values.initContainers.image | default "busybox" }}
           command:
             - /bin/sh
             - -c
