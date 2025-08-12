@@ -269,4 +269,27 @@ entries:
     urls:
     - https://github.com/rogosprojects/helm/releases/download/kpods-monitor-0.1.0/kpods-monitor-0.1.0.tgz
     version: 0.1.0
-generated: "2025-05-02T09:46:26.346017894Z"
+  release-tracker:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2025-08-12T14:08:29.153037219Z"
+    description: Helm chart for the Release Tracker application
+    digest: e3a7ae0c648561ac975de34f509416e2347ba446d943284efb770cd1e5316a35
+    home: https://github.com/your-org/release-tracker
+    icon: https://raw.githubusercontent.com/cncf/artwork/master/projects/helm/icon/color/helm-icon-color.png
+    keywords:
+    - kubernetes
+    - releases
+    - tracking
+    - dashboard
+    maintainers:
+    - email: devnull@example.com
+      name: Maintainers
+    name: release-tracker
+    sources:
+    - https://github.com/your-org/release-tracker
+    type: application
+    urls:
+    - https://github.com/rogosprojects/helm/releases/download/release-tracker-0.1.0/release-tracker-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-08-12T14:08:29.153100768Z"
