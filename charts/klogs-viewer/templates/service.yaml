@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ default "klogs-viewer" .Values.service.name }}
+  name: {{ include "chart.fullname" . }}
   namespace: {{ include "chart.namespace" . }}
   labels:
     {{- include "chart.labels" . | nindent 4 }}

@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "release-tracker.fullname" . }}-config
+  labels:
+    {{- include "release-tracker.labels" . | nindent 4 }}
+data:
+  NAMESPACES: {{ .Values.env.NAMESPACES | quote }}
+  COLLECTION_INTERVAL: {{ .Values.env.COLLECTION_INTERVAL | quote }}
+  DATABASE_PATH: {{ .Values.env.DATABASE_PATH | quote }}
+  PORT: {{ .Values.env.PORT | quote }}
+  IN_CLUSTER: {{ .Values.env.IN_CLUSTER | quote }}
+  CLIENT_NAME: {{ .Values.env.CLIENT_NAME | quote }}
+  ENV_NAME: {{ .Values.env.ENV_NAME | quote }}
+  {{- if .Values.env.API_KEYS }}
+  API_KEYS: {{ .Values.env.API_KEYS | quote }}
+  {{- end }}
+  BASE_PATH: {{ .Values.env.BASE_PATH | quote }}
+  MODE: {{ .Values.env.MODE | quote }}
+  {{- if .Values.env.MASTER_URL }}
+  MASTER_URL: {{ .Values.env.MASTER_URL | quote }}
+  {{- end }}
+  {{- if .Values.env.MASTER_API_KEY }}
+  MASTER_API_KEY: {{ .Values.env.MASTER_API_KEY | quote }}
+  {{- end }}
+  SYNC_INTERVAL: {{ .Values.env.SYNC_INTERVAL | quote }}
+  {{- if .Values.env.PROXY_URL }}
+  PROXY_URL: {{ .Values.env.PROXY_URL | quote }}
+  {{- end }}
+  TLS_INSECURE: {{ .Values.env.TLS_INSECURE | quote }}
+

@@ -2,8 +2,8 @@ apiVersion: v2
 name: kpods-monitor
 description: A Helm chart for Kubernetes Pod Monitor
 type: application
-version: 0.1.2
-appVersion: "0.1.2"
+version: 0.2.5
+appVersion: "0.2.2"
 keywords:
   - kubernetes
   - monitoring

@@ -2,13 +2,13 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ include "kpods-monitor.fullname" . }}-config
+  namespace: {{ include "chart.namespace" . }}
   labels:
     {{- include "kpods-monitor.labels" . | nindent 4 }}
 data:
   config.yaml: |
     general:
       name: {{ .Values.config.general.name | quote }}
-      refreshInterval: {{ .Values.config.general.refreshInterval }}
       port: {{ .Values.config.general.port }}
       debug: {{ .Values.config.general.debug }}
       basePath: {{ default "" .Values.config.general.basePath }}

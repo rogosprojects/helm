@@ -1,0 +1,21 @@
+# Exclude common VCS directories
+.git/
+.gitignore
+.bzr/
+.hg/
+.svn/
+
+# IDEs and editors
+*.swp
+*.tmp
+*.bak
+.idea/
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Other
+*.tgz
+
