@@ -272,6 +272,28 @@ entries:
   release-tracker:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2025-08-14T22:46:00.491413484Z"
+    description: Helm chart for the Release Tracker application
+    digest: 3c5d43e442d0d5a9800ed6928486a52114050107c2e5e039748ff55298e8ceac
+    home: https://github.com/rogosprojects/helm.git
+    icon: https://raw.githubusercontent.com/cncf/artwork/master/projects/helm/icon/color/helm-icon-color.png
+    keywords:
+    - kubernetes
+    - releases
+    - tracking
+    - dashboard
+    maintainers:
+    - email: devnull@example.com
+      name: Maintainers
+    name: release-tracker
+    sources:
+    - https://github.com/rogosprojects/helm.git
+    type: application
+    urls:
+    - https://github.com/rogosprojects/helm/releases/download/release-tracker-0.1.2/release-tracker-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2025-08-12T15:18:38.559715395Z"
     description: Helm chart for the Release Tracker application
     digest: e618bd21d232eedc8630945f98a5bf01d04d0f0589735ecab6343e163bcc30c0
@@ -314,4 +336,4 @@ entries:
     urls:
     - https://github.com/rogosprojects/helm/releases/download/release-tracker-0.1.0/release-tracker-0.1.0.tgz
     version: 0.1.0
-generated: "2025-08-12T15:18:38.559757785Z"
+generated: "2025-08-14T22:46:00.491461003Z"
