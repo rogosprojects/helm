@@ -29,6 +29,6 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: {{ include "release-tracker.serviceAccountName" . }}
-    namespace: {{ .Release.Namespace }}
+    namespace: {{ include "chart.namespace" . }}
 {{- end }}
 

@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "release-tracker.fullname" . }}
+  namespace: {{ include "chart.namespace" . }}
   labels:
     {{- include "release-tracker.labels" . | nindent 4 }}
 spec:
