@@ -9,7 +9,7 @@ fullnameOverride: ""
 namespace: ""
 
 image:
-  repository: release-tracker
+  repository: ghcr.io/rogosprojects/release-tracker
   tag: latest
   pullPolicy: IfNotPresent
   pullSecrets: []
