@@ -84,8 +84,6 @@ The following table lists the main configurable parameters of the chart and thei
 | `nodeSelector` | Node selector | `{}` |
 | `tolerations` | Tolerations | `[]` |
 | `affinity` | Affinity | `{}` |
-| `initContainers.enabled` | Enable init container for data directory setup | `true` |
-| `initContainers.image` | Init container image | `busybox` |
 
 ### Application Configuration
 

@@ -96,8 +96,3 @@ persistence:
   storageClassName: ""
   accessModes:
     - ReadWriteOnce
-
-initContainers:
-  enabled: true
-  image: "busybox"
-
