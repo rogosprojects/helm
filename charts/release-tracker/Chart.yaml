@@ -4,7 +4,7 @@ description: Helm chart for the Release Tracker application
 home: https://github.com/rogosprojects/helm.git
 icon: https://raw.githubusercontent.com/cncf/artwork/master/projects/helm/icon/color/helm-icon-color.png
 type: application
-version: 0.1.4
+version: 0.1.5
 appVersion: "0.1.0"
 keywords:
   - kubernetes
