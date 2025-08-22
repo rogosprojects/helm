@@ -38,6 +38,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "release-tracker.fullname" . }}-config
+            - secretRef:
+                name: {{ include "release-tracker.fullname" . }}-api-keys
             {{- with .Values.extraEnv }}
             {{- toYaml . | nindent 12 }}
             {{- end }}
