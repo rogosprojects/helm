@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "release-tracker.fullname" . }}
+  name: {{ include "krelease-tracker.fullname" . }}
   namespace: {{ include "chart.namespace" . }}
   labels:
-    {{- include "release-tracker.labels" . | nindent 4 }}
+    {{- include "krelease-tracker.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -13,5 +13,5 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "release-tracker.selectorLabels" . | nindent 4 }}
+    {{- include "krelease-tracker.selectorLabels" . | nindent 4 }}
 

@@ -2,10 +2,10 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ include "release-tracker.fullname" . }}-data
+  name: {{ include "krelease-tracker.fullname" . }}-data
   namespace: {{ include "chart.namespace" . }}
   labels:
-    {{- include "release-tracker.labels" . | nindent 4 }}
+    {{- include "krelease-tracker.labels" . | nindent 4 }}
 spec:
   accessModes: {{ toYaml .Values.persistence.accessModes | nindent 2 }}
   resources:

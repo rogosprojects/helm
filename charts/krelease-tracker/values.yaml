@@ -1,4 +1,4 @@
-# Default values for release-tracker.
+# Default values for krelease-tracker.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -9,7 +9,7 @@ fullnameOverride: ""
 namespace: ""
 
 image:
-  repository: ghcr.io/rogosprojects/release-tracker
+  repository: ghcr.io/rogosprojects/krelease-tracker
   tag: latest
   pullPolicy: IfNotPresent
   pullSecrets: []
@@ -48,7 +48,7 @@ ingress:
   className: ""
   annotations: {}
   hosts:
-    - host: release-tracker.local
+    - host: krelease-tracker.local
       paths:
         - path: /
           pathType: Prefix

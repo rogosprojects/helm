@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "release-tracker.fullname" . }}
+  name: {{ include "krelease-tracker.fullname" . }}
   namespace: {{ include "chart.namespace" . }}
   labels:
-    {{- include "release-tracker.labels" . | nindent 4 }}
+    {{- include "krelease-tracker.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   strategy:
     type: Recreate
   selector:
     matchLabels:
-      {{- include "release-tracker.selectorLabels" . | nindent 6 }}
+      {{- include "krelease-tracker.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "release-tracker.selectorLabels" . | nindent 8 }}
+        {{- include "krelease-tracker.selectorLabels" . | nindent 8 }}
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
         checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
@@ -27,9 +27,9 @@ spec:
       imagePullSecrets:
         {{- toYaml .Values.image.pullSecrets | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "release-tracker.serviceAccountName" . }}
+      serviceAccountName: {{ include "krelease-tracker.serviceAccountName" . }}
       containers:
-        - name: {{ include "release-tracker.name" . }}
+        - name: {{ include "krelease-tracker.name" . }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
@@ -38,9 +38,9 @@ spec:
               protocol: TCP
           envFrom:
             - configMapRef:
-                name: {{ include "release-tracker.fullname" . }}-config
+                name: {{ include "krelease-tracker.fullname" . }}-config
             - secretRef:
-                name: {{ include "release-tracker.fullname" . }}-api-keys
+                name: {{ include "krelease-tracker.fullname" . }}-api-keys
             {{- with .Values.extraEnv }}
             {{- toYaml . | nindent 12 }}
             {{- end }}
@@ -71,7 +71,7 @@ spec:
         - name: data
           {{- if .Values.persistence.enabled }}
           persistentVolumeClaim:
-            claimName: {{ include "release-tracker.fullname" . }}-data
+            claimName: {{ include "krelease-tracker.fullname" . }}-data
           {{- else }}
           emptyDir: {}
           {{- end }}

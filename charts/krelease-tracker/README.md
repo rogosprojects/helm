@@ -32,10 +32,10 @@ helm repo add rogosprojects https://rogosprojects.github.io/helm
 helm repo update
 
 # Simple installation with default values
-helm install release-tracker rogosprojects/release-tracker
+helm install krelease-tracker rogosprojects/krelease-tracker
 
 # Installation with custom values file
-helm install release-tracker rogosprojects/release-tracker \
+helm install krelease-tracker rogosprojects/krelease-tracker \
   --namespace observability --create-namespace \
   --values values.yaml
 ```
@@ -45,10 +45,10 @@ helm install release-tracker rogosprojects/release-tracker \
 ```bash
 # Clone the repository
 git clone https://github.com/rogosprojects/helm.git
-cd release-tracker/helm-chart
+cd krelease-tracker/helm-chart
 
 # Install directly from the chart directory
-helm install release-tracker . --namespace observability --create-namespace
+helm install krelease-tracker . --namespace observability --create-namespace
 ```
 
 ## Configuration
@@ -60,7 +60,7 @@ The following table lists the main configurable parameters of the chart and thei
 | Parameter | Description | Default |
 |-----------|-------------|---------|
 | `replicaCount` | Number of replicas | `1` |
-| `image.repository` | Container image repository | `release-tracker` |
+| `image.repository` | Container image repository | `krelease-tracker` |
 | `image.tag` | Container image tag | `latest` |
 | `image.pullPolicy` | Container image pull policy | `IfNotPresent` |
 | `image.pullSecrets` | List of image pull secrets | `[]` |
