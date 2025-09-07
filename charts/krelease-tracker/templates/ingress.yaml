@@ -2,9 +2,10 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ include "release-tracker.fullname" . }}
+  name: {{ include "krelease-tracker.fullname" . }}
+  namespace: {{ include "chart.namespace" . }}
   labels:
-    {{- include "release-tracker.labels" . | nindent 4 }}
+    {{- include "krelease-tracker.labels" . | nindent 4 }}
   {{- with .Values.ingress.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
@@ -23,7 +24,7 @@ spec:
             pathType: {{ .pathType }}
             backend:
               service:
-                name: {{ include "release-tracker.fullname" $ }}
+                name: {{ include "krelease-tracker.fullname" $ }}
                 port:
                   number: {{ $.Values.service.port }}
           {{- end }}

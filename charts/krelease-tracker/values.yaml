@@ -1,4 +1,4 @@
-# Default values for release-tracker.
+# Default values for krelease-tracker.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -6,9 +6,10 @@ replicaCount: 1
 
 nameOverride: ""
 fullnameOverride: ""
+namespace: ""
 
 image:
-  repository: release-tracker
+  repository: ghcr.io/rogosprojects/krelease-tracker
   tag: latest
   pullPolicy: IfNotPresent
   pullSecrets: []
@@ -47,7 +48,7 @@ ingress:
   className: ""
   annotations: {}
   hosts:
-    - host: release-tracker.local
+    - host: krelease-tracker.local
       paths:
         - path: /
           pathType: Prefix
@@ -73,7 +74,7 @@ env:
   NAMESPACES: "default"
   COLLECTION_INTERVAL: "60" # Minutes between collections
   IN_CLUSTER: "true"
-  API_KEYS: "" # API_KEYS can be provided here or via secret
+  API_KEYS: []
   BASE_PATH: ""
   MODE: "slave" # Options: "master" or "slave"
   MASTER_URL: "" # Required if MODE is "slave"
@@ -95,7 +96,3 @@ persistence:
   storageClassName: ""
   accessModes:
     - ReadWriteOnce
-
-initContainers:
-  enabled: true
-
