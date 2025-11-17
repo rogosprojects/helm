@@ -51,11 +51,12 @@ The following table lists the main configurable parameters of the chart and thei
 | `image.pullPolicy` | Container image pull policy | `IfNotPresent` |
 | `image.pullSecrets` | List of image pull secrets | `[]` |
 | `watchAllNamespaces` | Watch all namespaces | `true` |
-| `podLabels` | Comma-separated list of pod label selectors | `app=*` |
+| `application.podSelector` | Comma-separated list of pod label selectors | `app=*` |
 | `token` | Authentication token (leave empty to disable authentication) | `""` |
 | `ingress.className` | Ingress class name | `nginx` |
 | `ALLOWED_ORIGINS` | Comma-separated list of allowed WebSocket origins | `""` |
 
+**Default Values:** [values.yaml](values.yaml)
 ### WebSocket Origin Restrictions
 
 - **For single-domain deployments**: Leave `ALLOWED_ORIGINS` empty to enforce the same-origin policy.
@@ -74,7 +75,7 @@ For production deployments, we recommend:
 ### Common Issues
 
 1. **No pods displayed**
-   - Verify the `podLabels` configuration matches your pod labels
+   - Verify the `podSelector` configuration matches your pod labels
    - Check RBAC permissions: the service account needs list/get access to pods
 
 3. **Authentication errors**
