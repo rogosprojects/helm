@@ -59,6 +59,8 @@ service:
   name: klogs-viewer
 
 application:
+  # Base path for the application (e.g., "/logs")
+  basePath: "/logs"
   # Label selector for pods, in the format key1=value1,key2=value2
   # If not specified, all pods will be shown
   podSelector: "app=nginx"

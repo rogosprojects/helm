@@ -51,6 +51,8 @@ spec:
         - name: NAMESPACE
           value: "*"
         {{- end }}
+        - name: BASE_PATH
+          value: {{ .Values.application.basePath | default "/logs" | quote }}
         {{- if .Values.application.authEnabled }}
         - name: TOKEN
           valueFrom:

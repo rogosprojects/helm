@@ -51,6 +51,7 @@ The following table lists the main configurable parameters of the chart and thei
 | `image.pullPolicy` | Container image pull policy | `IfNotPresent` |
 | `image.pullSecrets` | List of image pull secrets | `[]` |
 | `watchAllNamespaces` | Watch all namespaces | `true` |
+| `application.basePath` | Base path for the application | `/logs` |
 | `application.podSelector` | Comma-separated list of pod label selectors | `app=*` |
 | `token` | Authentication token (leave empty to disable authentication) | `""` |
 | `ingress.className` | Ingress class name | `nginx` |
