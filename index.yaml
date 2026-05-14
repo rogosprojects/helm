@@ -3,6 +3,19 @@ entries:
   klogs-viewer:
   - apiVersion: v2
     appVersion: 0.1.1
+    created: "2026-05-14T22:16:26.042984534Z"
+    description: KLogs Viewer is a lightweight, web-based application that allows
+      you to view and download Kubernetes pod logs directly in your browser. Designed
+      for developers and operators who need quick access to container logs without
+      using the command line.
+    digest: bbb6789d05e9e0c33e76fb9d0cec003f11def52346aaa9ce39b41138b52cdc19
+    name: klogs-viewer
+    type: application
+    urls:
+    - https://github.com/rogosprojects/helm/releases/download/klogs-viewer-0.1.15/klogs-viewer-0.1.15.tgz
+    version: 0.1.15
+  - apiVersion: v2
+    appVersion: 0.1.1
     created: "2025-11-18T11:17:42.709311444Z"
     description: KLogs Viewer is a lightweight, web-based application that allows
       you to view and download Kubernetes pod logs directly in your browser. Designed
@@ -368,4 +381,4 @@ entries:
     urls:
     - https://github.com/rogosprojects/helm/releases/download/krelease-tracker-0.1.8/krelease-tracker-0.1.8.tgz
     version: 0.1.8
-generated: "2025-11-18T11:17:42.709376405Z"
+generated: "2026-05-14T22:16:26.0430283Z"
