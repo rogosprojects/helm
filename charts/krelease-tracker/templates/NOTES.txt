@@ -7,7 +7,9 @@ Thanks for installing {{ .Chart.Name }}!
 {{- end }}
 {{- if .Values.kgateway.enabled }}
 {{- range $hostname := .Values.kgateway.hostnames }}
-  echo http://{{ $hostname }}  # via kgateway HTTPRoute
+{{- range $.Values.kgateway.paths }}
+  echo http://{{ $hostname }}{{ .path }}  # via kgateway HTTPRoute
+{{- end }}
 {{- end }}
 {{- if not .Values.kgateway.hostnames }}
   echo "Application exposed via kgateway HTTPRoute (hostname resolved by Gateway listener)"
