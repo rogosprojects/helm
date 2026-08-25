@@ -59,6 +59,8 @@ service:
   name: klogs-viewer
 
 application:
+  # Base path for the application (e.g., "/logs")
+  basePath: "/logs"
   # Label selector for pods, in the format key1=value1,key2=value2
   # If not specified, all pods will be shown
   podSelector: "app=nginx"
@@ -103,6 +105,22 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
+
+kgateway:
+  enabled: false
+  annotations: {}
+  # References to parent Gateway resources (required)
+  parentRefs:
+    - name: envoy-gateway
+      namespace: kgateway-system
+      # sectionName: https
+  # Hostnames to match (leave empty to inherit from the Gateway listener)
+  hostnames: []
+  #  - chart-example.local
+  # Path rules — pathType: Exact | PathPrefix | RegularExpression
+  paths:
+    - path: /logs
+      pathType: PathPrefix
 
 resources:
   limits:

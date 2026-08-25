@@ -2,12 +2,24 @@ Thank you for installing {{ .Chart.Name }}.
 
 Your release is named {{ .Release.Name }}.
 
-{{- if .Values.ingress.enabled }}
+{{- if or .Values.ingress.enabled .Values.kgateway.enabled }}
 The application is available at:
+{{- if .Values.ingress.enabled }}
 {{- range $host := .Values.ingress.hosts }}
   {{- range .paths }}
   http{{ if $.Values.ingress.tls }}s{{ end }}://{{ $host.host }}{{ .path }}
   {{- end }}
+{{- end }}
+{{- end }}
+{{- if .Values.kgateway.enabled }}
+{{- range $hostname := .Values.kgateway.hostnames }}
+  {{- range $.Values.kgateway.paths }}
+  http://{{ $hostname }}{{ .path }}  (via kgateway HTTPRoute)
+  {{- end }}
+{{- end }}
+{{- if not .Values.kgateway.hostnames }}
+  (via kgateway HTTPRoute — hostname resolved by Gateway listener)
+{{- end }}
 {{- end }}
 {{- else }}
 To access the application, run these commands:

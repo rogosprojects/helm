@@ -54,6 +54,22 @@ ingress:
           pathType: Prefix
   tls: []
 
+kgateway:
+  enabled: false
+  annotations: {}
+  # References to parent Gateway resources (required)
+  parentRefs:
+    - name: envoy-gateway
+      namespace: kgateway-system
+      # sectionName: https
+  # Hostnames to match (leave empty to inherit from the Gateway listener)
+  hostnames: []
+  #  - krelease-tracker.local
+  # Path rules — pathType: Exact | PathPrefix | RegularExpression
+  paths:
+    - path: /
+      pathType: PathPrefix
+
 resources:
   requests:
     memory: 128Mi
