@@ -147,6 +147,21 @@ entries:
   kpods-monitor:
   - apiVersion: v2
     appVersion: 0.2.2
+    created: "2026-08-25T10:36:38.698445248Z"
+    description: A Helm chart for Kubernetes Pod Monitor
+    digest: f38c797b18c68eff4502fdcafc392bb1b3722aa5d1d438c6b9f094356c65df25
+    home: https://github.com/rogosprojects/kpods-monitor
+    keywords:
+    - kubernetes
+    - monitoring
+    - pods
+    name: kpods-monitor
+    type: application
+    urls:
+    - https://github.com/rogosprojects/helm/releases/download/kpods-monitor-0.2.6/kpods-monitor-0.2.6.tgz
+    version: 0.2.6
+  - apiVersion: v2
+    appVersion: 0.2.2
     created: "2025-04-28T15:34:28.218392124Z"
     description: A Helm chart for Kubernetes Pod Monitor
     digest: 996859b4a306d475898308ea224db1a9c351590db45be4abfe2ee2235856d743
@@ -298,6 +313,25 @@ entries:
   krelease-tracker:
   - apiVersion: v2
     appVersion: 0.13.0
+    created: "2026-08-25T10:36:38.922545382Z"
+    description: Helm chart for the Release Tracker application
+    digest: 779b2ca8da4bf7bc349e34cbd16b46a9e5fff149e94d84c006703099f12a9fba
+    home: https://github.com/rogosprojects/helm.git
+    icon: https://raw.githubusercontent.com/cncf/artwork/master/projects/helm/icon/color/helm-icon-color.png
+    keywords:
+    - kubernetes
+    - releases
+    - tracking
+    - dashboard
+    name: krelease-tracker
+    sources:
+    - https://github.com/rogosprojects/helm.git
+    type: application
+    urls:
+    - https://github.com/rogosprojects/helm/releases/download/krelease-tracker-0.1.12/krelease-tracker-0.1.12.tgz
+    version: 0.1.12
+  - apiVersion: v2
+    appVersion: 0.13.0
     created: "2025-10-23T09:56:35.272730292Z"
     description: Helm chart for the Release Tracker application
     digest: 0ec865544f51770cac3252d12352d043b9aebdb4fd9dcd17bd399f692ad5bc7d
@@ -381,4 +415,4 @@ entries:
     urls:
     - https://github.com/rogosprojects/helm/releases/download/krelease-tracker-0.1.8/krelease-tracker-0.1.8.tgz
     version: 0.1.8
-generated: "2026-05-14T22:16:26.0430283Z"
+generated: "2026-08-25T10:36:38.92262434Z"
